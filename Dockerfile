@@ -10,5 +10,9 @@ COPY lemari /lemari
 # Buat file dapat dieksekusi
 RUN chmod +x /lemari
 
-# Jalankan nc untuk menyajikan file
-CMD ["nc", "-lkp", "8000", "-e", "/lemari"]
+# Buat script untuk menjalankan file
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Jalankan script entrypoint
+CMD ["/entrypoint.sh"]
