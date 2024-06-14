@@ -1,5 +1,5 @@
 #!/bin/sh
 
 while true; do
-  nc -l -p 8000 -c "/lemari"
+  socat TCP-LISTEN:12345,fork EXEC:/lemari
 done
