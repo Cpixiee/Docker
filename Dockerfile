@@ -1,8 +1,8 @@
-# Gunakan image dasar yang ringan dengan nc (Alpine Linux)
+# Gunakan image dasar yang ringan dengan socat (Alpine Linux)
 FROM alpine:latest
 
-# Instal netcat
-RUN apk add --no-cache netcat-openbsd
+# Instal socat
+RUN apk add --no-cache socat
 
 # Salin file ELF ke dalam container
 COPY lemari /lemari
