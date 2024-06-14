@@ -11,4 +11,4 @@ COPY lemari /lemari
 RUN chmod +x /lemari
 
 # Jalankan nc untuk menyajikan file
-CMD ["nc", "-lkp", "12345", "-e", "/lemari"]
+CMD ["nc", "-lkp", "8000", "-e", "/lemari"]
