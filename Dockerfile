@@ -1,18 +1,18 @@
-# Gunakan image dasar yang ringan dengan socat (Alpine Linux)
+# Use a base image with netcat installed
 FROM alpine:latest
 
-# Instal socat
-RUN apk add --no-cache socat
+# Install necessary packages
+RUN apk --no-cache add nc
 
-# Salin file ELF ke dalam container
-COPY lemari /lemari
+# Copy the ELF file and flag.txt into the container
+COPY chall /app/chall
+COPY flag.txt /app/flag.txt
 
-# Buat file dapat dieksekusi
-RUN chmod +x /lemari
+# Make the ELF file executable
+RUN chmod +x /app/chall
 
-# Buat script untuk menjalankan file
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# Expose the port that netcat will listen on
+EXPOSE 9999
 
-# Jalankan script entrypoint
-CMD ["/entrypoint.sh"]
+# Start netcat to serve the ELF file
+CMD ["sh", "-c", "while true; do nc -l -p 9999 -e /app/chall; done"]
