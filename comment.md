@@ -2,7 +2,7 @@ check images use (docker ps)
 
 docker stop and remove image ( docker stop/rm id_container)
 
-docker build (docker build -t <file> .)
+docker build (docker build -t file .)
 
 docker run (docker run -p 12345:12345 elf-runner)
 
